@@ -1,0 +1,8 @@
+.navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
+  /* background-color:  #3366FF; */
+  /* border-radius: 5px;
+  padding: 5px; */
+  color: #3366FF !important;
+  /* font-size: 16px;
+  line-height: 24px;   */
+}

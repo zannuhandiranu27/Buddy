@@ -1,0 +1,265 @@
+.home {
+    background-color: #F4F7F9;
+}
+
+.home .hero-tag {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #3366FF;
+}
+
+.home .hero-heading {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 72px;
+}
+
+.home .hero-description {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+
+    /* Black/300 */
+
+    color: #404040;
+
+    opacity: 0.8;
+}
+
+.banner .parallax {
+    background-color: #fbfbfc;
+    padding: 0 20px;
+    height: 281px;
+    margin: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    box-shadow: 10px 10px 31px -2px rgba(0, 0, 0, 0.40);
+    -webkit-box-shadow: 10px 10px 31px -2px rgba(0, 0, 0, 0.40);
+    -moz-box-shadow: 10px 10px 31px -2px rgba(0, 0, 0, 0.40);
+}
+
+.banner .parallax span {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    color: #3366FF;
+    padding-right: 150px;
+}
+
+.arrow {
+    font-size: 30px;
+    display: flex;
+    position: absolute;
+    top: 120px;
+}
+
+.arrow-right {
+    right: 5px;
+    cursor: pointer;
+}
+
+.arrow-left {
+    left: 5px;
+    cursor: pointer;
+}
+
+.banner .parallax p {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 25px;
+    color: #404040;
+    padding-top: 20px;
+    padding-right: 150px;
+}
+
+.aboutBanner {
+    width: 100%;
+    min-height: 300px;
+    background: #3366FF;
+    text-align: center;
+    padding: 40px 20px;
+    /* Sesuaikan padding dengan kebutuhan */
+}
+
+.aboutBanner .container {
+    margin: auto;
+    max-width: 1000px;
+    /* Sesuaikan lebar maksimum dengan kebutuhan */
+}
+
+.aboutBanner .container span {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    color: #FFFFFF;
+}
+
+.aboutBanner .container p {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    /* Sesuaikan ukuran font dengan kebutuhan */
+    color: #FFFFFF;
+    opacity: 0.8;
+    padding-top: 20px;
+}
+
+.aboutBanner .container button {
+    border: none;
+    background: #FFFFFF;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    color: #3366FF;
+    transition: 0.4s;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.aboutBanner .container button:hover {
+    transform: scale(1.1);
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+    .aboutBanner .container span {
+        font-size: 20px;
+        /* Ukuran font yang berbeda untuk layar kecil */
+    }
+
+    .aboutBanner .container p {
+        font-size: 14px;
+        /* Ukuran font yang berbeda untuk layar kecil */
+    }
+}
+
+.HomeArtikel .container .heading span {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    color: #000000;
+}
+
+.HomeArtikel .container .heading p {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    color: #404040;
+    opacity: 0.8;
+    padding-top: 15px;
+}
+
+.HomeArtikel .container .row .artikel-text span {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    color: #000000;
+}
+
+.HomeArtikel .container .row .artikel-text p {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    color: #404040;
+    opacity: 0.8;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.HomeArtikel .container .row .artikel-text button {
+    border: none;
+    background: #3366FF;
+    padding: 12px 30px;
+    border-radius: 10px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    color: #FFFFFF;
+    transition: .4s;
+    cursor: pointer;
+}
+
+.HomeArtikel .container .row .artikel-text button:hover {
+    transform: scale(1.1);
+}
+
+.HomeListArtikel .container .heading span {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 60px;
+    /* identical to box height */
+
+
+    color: #FEFEFE;
+}
+
+.HomeListArtikel .container .heading p {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 36px;
+    color: #FEFEFE;
+    opacity: 0.8;
+    padding-top: 15px;
+}
+
+
+.HomeFormLapor .container .heading span {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    color: #000000;
+}
+
+.HomeFormLapor .container .heading p {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    color: #404040;
+    opacity: 0.8;
+    padding-top: 15px;
+}
+
+.HomeFormLapor .container .row .artikel-text span {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    color: #000000;
+}
+
+.HomeFormLapor .container .row .artikel-text p {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    color: #404040;
+    opacity: 0.8;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.HomeFormLapor .container .row .artikel-text button {
+    border: none;
+    background: #3366FF;
+    padding: 12px 30px;
+    border-radius: 10px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    color: #FFFFFF;
+    transition: .4s;
+    cursor: pointer;
+}
+
+.HomeFormLapor .container .row .artikel-text button:hover {
+    transform: scale(1.1);
+}
