@@ -167,4 +167,4 @@ function FormPelaporan(props) {
     </>
   )
 }
-export default FormPelaporan
+export default FormPelaporan;

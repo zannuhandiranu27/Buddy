@@ -71,8 +71,8 @@ function RiwayatPelaporan() {
                     <thead>
                         <tr style={{ borderBottom: '1px solid #ddd', background: '#f2f2f2' }}>
                             <th style={{ padding: '10px', textAlign: 'left', width: '40%' }}>Judul</th>
-                            <th style={{ padding: '10px', textAlign: 'left', width: '30%' }}>Isi</th>
                             <th style={{ padding: '10px', textAlign: 'left', width: '20%' }}>Status</th>
+                            <th style={{ padding: '10px', textAlign: 'left', width: '30%' }}>Isi</th>
                             <th style={{ padding: '10px', textAlign: 'left', width: '10%' }}>Action</th>
                         </tr>
                     </thead>
@@ -80,12 +80,13 @@ function RiwayatPelaporan() {
                         {currentReports.map((report) => (
                             <tr key={report.id} style={{ borderBottom: '1px solid #ddd' }}>
                                 <td style={{ padding: '10px', textAlign: 'left', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{report.judul}</td>
-                                <td style={{ padding: '10px', textAlign: 'left', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{report.isi}</td>
                                 <td style={{ padding: '10px', textAlign: 'left', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{report.status}</td>
+                                <td style={{ padding: '10px', textAlign: 'left', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{report.isi}</td>
                                 <td style={{ padding: '10px', textAlign: 'left' }}>
-                                    <button onClick={() => handleDeleteClick(report.id)}>
+                                    <button onClick={() => handleDeleteClick(report.id)} className="btn btn-danger">
                                         Delete
                                     </button>
+
                                 </td>
                             </tr>
                         ))}

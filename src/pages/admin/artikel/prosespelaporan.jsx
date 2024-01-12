@@ -156,9 +156,7 @@ function Prosespelaporan() {
                                     {report.isi}
                                 </td>
                                 <td style={{ padding: "10px", textAlign: "left" }}>
-                                    <button
-                                        onClick={() => handleCompleteClick(report.id)}
-                                    >
+                                    <button onClick={() => handleProcessClick(report.id)} className="btn btn-success">
                                         Selesai
                                     </button>
                                 </td>

@@ -73,7 +73,7 @@ function Datapelaporan() {
                 <td style={{ padding: '10px', textAlign: 'left', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{report.status}</td>
                 <td style={{ padding: '10px', textAlign: 'left', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{report.isi}</td>
                 <td style={{ padding: '10px', textAlign: 'left' }}>
-                  <button onClick={(event) => handleProcessClick(report.id, event)}>Proses</button>
+                  <button onClick={() => handleProcessingClick(report.id)} className="btn btn-info">Proses</button>
                 </td>
               </tr>
             ))}

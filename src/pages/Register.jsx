@@ -3,21 +3,67 @@ import buddy from "../assets/img/buddy.png";
 import axios from "axios";
 import Cookies from "universal-cookie";
 import { Link } from "react-router-dom";
+import { useState } from "react"; // Import useState
 import "../assets/css/Register.css";
 import { Button, Card, Col, Container, Image, Row } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from 'react-bootstrap/Form';
 
 const cookies = new Cookies();
+
 function Register() {
+  // State untuk menyimpan nilai firstname, lastname, dan fullname
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [fullname, setFullname] = useState("");
+
+  const handleFirstnameChange = (event) => {
+    const value = event.target.value;
+    setFirstname(value);
+    updateFullname(value, lastname);
+  };
+
+  const handleLastnameChange = (event) => {
+    const value = event.target.value;
+    setLastname(value);
+    updateFullname(firstname, value);
+  };
+
+  const updateFullname = (first, last) => {
+    const fullName = `${first} ${last}`;
+    setFullname(fullName);
+  };
 
   const register = async () => {
-    let firstname = document.querySelector("#firstName").value;
-    let lastname = document.querySelector("#lastName").value;
-    let fullname = document.querySelector("#fullName").value;
     let email = document.querySelector("#email").value;
     let address = document.querySelector("#address").value;
     let password = document.querySelector("#password").value;
+    let phoneNumber = document.querySelector("#address").value;
+
+    if (firstname.length > 15) {
+      alert("Nama depan maksimal 15 karakter!");
+      return;
+    }
+
+    if (lastname.length > 15) {
+      alert("Nama belakang maksimal 15 karakter!");
+      return;
+    }
+
+    if (!email.includes("@")) {
+      alert("Email harus mengandung karakter '@'!");
+      return;
+    }
+
+    if (!/^[0-9]+$/.test(phoneNumber) || !phoneNumber.startsWith("08") || phoneNumber.length > 13) {
+      alert("Nomor telepon harus menggunakan angka dan diawali dengan 08");
+      return;
+    }
+
+    if (password.length > 15) {
+      alert("Password maksimal 15 karakter!");
+      return;
+    }
 
     let config = {
       url: "https://64532ddfe9ac46cedf1ede09.mockapi.io/Users",
@@ -32,9 +78,9 @@ function Register() {
         email: email,
         address: address,
         password: password,
-
       })
     };
+
     try {
       const response = await axios(config);
       if (response.status === 201) {
@@ -51,6 +97,7 @@ function Register() {
       console.error("Error:", error);
     }
   };
+
   const style = {
     borderRadius: "1rem"
   }
@@ -71,19 +118,40 @@ function Register() {
                       <Card.Body className="p-4 p-lg-5 text-black">
                         <span style={{ fontWeight: 500 }}><Image src={buddy} style={{ width: "50px" }} />&nbsp; Buddy</span>
                         <h2 style={{ marginTop: '20px', fontWeight: 600, fontSize: "50px" }}>Daftar</h2>
-                        <p style={{ fontSize: '14px' }} >Udah punya akun ? <Link to="/login" className="text-decoration-none">Masuk Sekarang</Link></p>
+                        <p style={{ fontSize: '14px' }}>Udah punya akun ? <Link to="/login" className="text-decoration-none">Masuk Sekarang</Link></p>
                         <Form>
                           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                             <Form.Label style={{ fontSize: '14px' }}>First Name</Form.Label>
-                            <Form.Control id="firstName" style={{ fontSize: '14px', padding: "10px 12px" }} type="text" placeholder="Masukkan Nama Lengkap" />
+                            <Form.Control
+                              id="firstName"
+                              style={{ fontSize: '14px', padding: "10px 12px" }}
+                              type="text"
+                              placeholder="Masukkan Nama Awal"
+                              value={firstname}
+                              onChange={handleFirstnameChange}
+                            />
                           </Form.Group>
                           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                             <Form.Label style={{ fontSize: '14px' }}>Last Name</Form.Label>
-                            <Form.Control id="lastName" style={{ fontSize: '14px', padding: "10px 12px" }} type="text" placeholder="Masukkan Nama Lengkap" />
+                            <Form.Control
+                              id="lastName"
+                              style={{ fontSize: '14px', padding: "10px 12px" }}
+                              type="text"
+                              placeholder="Masukkan Nama Depan"
+                              value={lastname}
+                              onChange={handleLastnameChange}
+                            />
                           </Form.Group>
                           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                             <Form.Label style={{ fontSize: '14px' }}>Full Name</Form.Label>
-                            <Form.Control id="fullName" style={{ fontSize: '14px', padding: "10px 12px" }} type="text" placeholder="Masukkan Nama Lengkap" />
+                            <Form.Control
+                              id="fullName"
+                              style={{ fontSize: '14px', padding: "10px 12px" }}
+                              type="text"
+                              placeholder="Masukkan Nama Lengkap"
+                              value={fullname}
+                              disabled
+                            />
                           </Form.Group>
                           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                             <Form.Label style={{ fontSize: '14px' }}>Email address</Form.Label>
@@ -97,7 +165,7 @@ function Register() {
                             <Form.Label style={{ fontSize: '14px' }}>Password</Form.Label>
                             <Form.Control id="password" style={{ fontSize: '14px', padding: "10px 12px" }} type="password" placeholder="Masukkan Kata Sandi" />
                           </Form.Group>
-                          <Form.Group className="mt-5" >
+                          <Form.Group className="mt-5">
                             <Button onClick={register} className="py-2" style={{ width: "100%", background: "var(--blue-300, #36F)", fontSize: '12px' }}>Daftar</Button>
                           </Form.Group>
                         </Form>
