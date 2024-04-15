@@ -113,7 +113,6 @@ function FormPelaporan(props) {
                         <option value="" disabled>Pilih Kategori Laporan Bullying Anda *</option>
                         <option value="Verbal">Verbal</option>
                         <option value="Fisik">Fisik</option>
-                        <option value="Mental">Mental</option>
                       </Form.Select>
                     </Form.Group>
                     <Form.Group className="mb-3 mt-4" id="exampleForm.ControlInput1">
