@@ -1,1 +1,1 @@
-# final-project fe18 buddy
+buddy
