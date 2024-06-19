@@ -19,8 +19,8 @@ function EditProfil() {
     setUpdatedUser((prevData) => ({
       ...prevData,
       [e.target.name]: e.target.value,
-    }))
-  }
+    }));
+  };
   const handleSubmit = () => {
     MySwal.fire({
       title: "Are you sure want to Edit your profile?",
@@ -53,11 +53,7 @@ function EditProfil() {
                   <div className="card-edit-profile">
                     <div className="profile-container">
                       <div className="position-relative">
-                        <img
-                          className="profile-img mt-3"
-                          src={userData.image}
-                          alt="Profile Picture"
-                        />
+                        <img className="profile-img mt-3" src={userData.image} alt="Profile Picture" />
                       </div>
                       <h5 className="mt-3">{userData.fullname}</h5>
                     </div>
@@ -76,120 +72,50 @@ function EditProfil() {
                     <div className="col-md-6">
                       <div className="form-group">
                         <label>Username</label>
-                        <input
-                          type="text"
-                          className="form-control mt-2"
-                          id="username"
-                          name="username"
-                          value={updatedUser.username}
-                          onChange={handleChange}
-                          readOnly
-                        />
+                        <input type="text" className="form-control mt-2" id="username" name="username" value={updatedUser.username} onChange={handleChange} readOnly />
                       </div>
 
                       <div className="form-group">
                         <label>Email</label>
-                        <input
-                          type="text"
-                          className="form-control mt-2"
-                          id="email"
-                          name="email"
-                          value={updatedUser.email}
-                          onChange={handleChange}
-                          readOnly
-                        />
+                        <input type="text" className="form-control mt-2" id="email" name="email" value={updatedUser.email} onChange={handleChange} readOnly />
                       </div>
                       <div className="form-group">
                         <label>First Name</label>
-                        <input
-                          type="text"
-                          className="form-control mt-2"
-                          id="firstname"
-                          name="firstname"
-                          value={updatedUser.firstname}
-                          onChange={handleChange}
-                        />
+                        <input type="text" className="form-control mt-2" id="firstname" name="firstname" value={updatedUser.firstname} onChange={handleChange} />
                       </div>
                       <div className="form-group">
                         <label>Last Name</label>
-                        <input
-                          type="text"
-                          className="form-control mt-2"
-                          id="lastname"
-                          name="lastname"
-                          value={updatedUser.lastname}
-                          onChange={handleChange}
-
-                        />
+                        <input type="text" className="form-control mt-2" id="lastname" name="lastname" value={updatedUser.lastname} onChange={handleChange} />
                       </div>
                       <div className="form-group">
                         <label>Url Image</label>
-                        <input
-                          type="text"
-                          className="form-control mt-2"
-                          id="image"
-                          name="image"
-                          value={updatedUser.image}
-                          onChange={handleChange}
-                        />
+                        <input type="text" className="form-control mt-2" id="image" name="image" value={updatedUser.image} onChange={handleChange} />
                       </div>
                       <div className="form-group">
                         <label>Password</label>
-                        <input
-                          type="password"
-                          className="form-control mt-2"
-                          id="password"
-                          name="password"
-                          value={updatedUser.password}
-                          onChange={handleChange}
-                        />
+                        <input type="password" className="form-control mt-2" id="password" name="password" value={updatedUser.password} onChange={handleChange} />
                       </div>
                     </div>
                     <div className="col-md-6">
                       <div className="form-group">
                         <label>Full Name</label>
-                        <input
-                          type="text"
-                          className="form-control mt-2"
-                          id="fullname"
-                          name="fullname"
-                          value={updatedUser.fullname}
-                          onChange={handleChange}
-                        />
+                        <input type="text" className="form-control mt-2" id="fullname" name="fullname" value={updatedUser.fullname} onChange={handleChange} />
                       </div>
                       <div className="form-group">
-                        <label>Address</label>
-                        <input
-                          type="text"
-                          className="form-control mt-2"
-                          id="address"
-                          name="address"
-                          value={updatedUser.address}
-                          onChange={handleChange}
-                        />
+                        <label>Phone Number</label>
+                        <input type="text" className="form-control mt-2" id="phoneNumber" name="phoneNumber" value={updatedUser.phoneNumber} onChange={handleChange} />
                       </div>
 
                       <div className="form-group">
                         <label>Tanggal Lahir</label>
-                        <input
-                          type="date"
-                          className="form-control mt-2"
-                          id="borndate"
-                          name="borndate"
-                          defaultValue={updatedUser.borndate}
-                          onChange={handleChange}
-                        />
+                        <input type="date" className="form-control mt-2" id="borndate" name="borndate" defaultValue={updatedUser.borndate} onChange={handleChange} />
                       </div>
-
                     </div>
                   </div>
                   <hr />
                   <div className="row pb-4">
                     <div className="col-md-12">
-                      <button
-                        className="btn btn-primary"
-                        onClick={handleSubmit}
-                      >
+                      <button className="btn btn-primary" onClick={handleSubmit}>
                         Ubah Profile
                       </button>
                     </div>

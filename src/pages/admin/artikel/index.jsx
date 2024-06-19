@@ -1,16 +1,12 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  deleteArtikel,
-  getArtikel,
-} from "../../../redux/reducer/artikelReducer";
+import { deleteArtikel, getArtikel } from "../../../redux/reducer/artikelReducer";
 import ListArtikelAdmin from "../../../components/ListArtikelAdmin";
-import '../../../assets/css/DashboardAdmin.css'
+import "../../../assets/css/DashboardAdmin.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import iconDb from "../../../assets/img/icon_db.png";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-
 
 const MySwal = withReactContent(Swal);
 
@@ -26,6 +22,7 @@ function Index() {
   const handleUpdateArtikel = (id) => {
     navigate(`/admin/artikel/update/${id}`);
   };
+
   const handleDeleteArtikel = (id) => {
     MySwal.fire({
       title: "Are you sure want to delete this article?",
@@ -37,16 +34,15 @@ function Index() {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        
         dispatch(deleteArtikel(id));
         MySwal.fire("Deleted!", "Your article has been deleted.", "success");
       }
     });
   };
-  const handlePreviewArtikel = (id) => {
-   navigate(`/admin/artikel/preview/${id}`) 
-  }
 
+  const handlePreviewArtikel = (id) => {
+    navigate(`/admin/artikel/preview/${id}`);
+  };
 
   return (
     <>
@@ -63,18 +59,17 @@ function Index() {
               <div className="parallax-heading mb-3">
                 <h2 className="">List Artikel</h2>
                 <NavLink to="/admin/artikel/create">
-                  <button className="btn btn-primary mb-2">
-                    Tambah Artikel
-                  </button>
+                  <button className="btn btn-primary mb-2">Tambah Artikel</button>
                 </NavLink>
               </div>
               <div className="table">
-            <ListArtikelAdmin
-            artikel={artikel}
-            onUpdateArtikel={handleUpdateArtikel}
-            onDeleteArtikel={handleDeleteArtikel}
-            onPreviewArtikel={handlePreviewArtikel}
-            />
+                {/* Reverse the order of 'artikel' array before passing */}
+                <ListArtikelAdmin
+                  artikel={[...artikel].reverse()} // Pass reversed array
+                  onUpdateArtikel={handleUpdateArtikel}
+                  onDeleteArtikel={handleDeleteArtikel}
+                  onPreviewArtikel={handlePreviewArtikel}
+                />
               </div>
             </div>
           </div>

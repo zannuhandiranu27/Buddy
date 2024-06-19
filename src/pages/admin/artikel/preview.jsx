@@ -13,6 +13,13 @@ function Preview() {
     dispatch(getArtikel());
   }, [dispatch]);
 
+  // Fungsi untuk memformat tanggal menjadi "DD MonthName YYYY"
+  const formatDate = (dateString) => {
+    const options = { day: "numeric", month: "long", year: "numeric" };
+    const formattedDate = new Date(dateString).toLocaleDateString("id-ID", options);
+    return formattedDate;
+  };
+
   return (
     <>
       <AdminLayout>
@@ -45,7 +52,7 @@ function Preview() {
                     </div>
                     <div className="ms-auto p-2">
                       <i className="fa fa-bookmark px-3"></i>
-                      <span> {el.createdAt} </span>
+                      <span> {formatDate(el.createdAt)} </span>
                     </div>
                   </div>
                 </div>
@@ -57,10 +64,7 @@ function Preview() {
                   </div>
                   <div className="desc mb-5">
                     {/* <p>{el.description}</p> */}
-                    <div
-                      className="card-text"
-                      dangerouslySetInnerHTML={{ __html: el.description }}
-                    ></div>
+                    <div className="card-text" dangerouslySetInnerHTML={{ __html: el.description }}></div>
                   </div>
                 </div>
               </div>
