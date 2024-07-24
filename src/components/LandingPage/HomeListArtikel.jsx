@@ -56,21 +56,14 @@ function HomeListArtikel() {
       <div className="container">
         <div className="row heading text-center pt-5">
           <span>Tips untuk Sobat Buddy</span>
-          <p>
-            Berikut tips untuk mencegah terjadinya bullying yang bisa sobat
-            buddy lakukan ya.
-          </p>
+          <p>Berikut tips untuk mencegah terjadinya bullying yang bisa sobat buddy lakukan ya.</p>
         </div>
         <div className="row justify-content-md-center mt-5">
           <Slider {...settings}>
             {artikel.map((item) => {
               return (
                 <div className="col-md-4" key={item.id}>
-                  <CardHome
-                    src={item.image_source}
-                    tittle={item.title}
-                    onClick={() => handleDetail(item.id)}
-                  />
+                  <CardHome src={item.image_source} tittle={item.title} onClick={() => handleDetail(item.id)} />
                 </div>
               );
             })}

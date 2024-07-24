@@ -5,17 +5,19 @@ import Cookies from "universal-cookie";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import "../assets/css/Register.css";
-import { Button, Card, Col, Container, Image, Row, Alert } from "react-bootstrap"; // Import Alert
+import { Button, Card, Col, Container, Image, Row } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Form from "react-bootstrap/Form";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
+const MySwal = withReactContent(Swal);
 const cookies = new Cookies();
 
 function Register() {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [fullname, setFullname] = useState("");
-  const [showSuccessAlert, setShowSuccessAlert] = useState(false); // State for showing success alert
 
   const handleFirstnameChange = (event) => {
     const value = event.target.value;
@@ -41,27 +43,32 @@ function Register() {
     let phoneNumber = document.querySelector("#phoneNumber").value;
 
     if (firstname.length > 15) {
-      alert("Nama depan maksimal 15 karakter!");
+      MySwal.fire("Error", "Nama depan maksimal 15 karakter!", "error");
       return;
     }
 
     if (lastname.length > 15) {
-      alert("Nama belakang maksimal 15 karakter!");
+      MySwal.fire("Error", "Nama belakang maksimal 15 karakter!", "error");
       return;
     }
 
     if (!email.includes("@gmail.com")) {
-      alert("Email harus mengandung '@gmail.com'!");
+      MySwal.fire("Error", "Email harus mengandung '@gmail.com'!", "error");
       return;
     }
 
     if (!/^[0-9]+$/.test(phoneNumber) || !phoneNumber.startsWith("08") || phoneNumber.length > 13) {
-      alert("Nomor telepon harus menggunakan angka, diawali dengan 08, dan maksimal 13 karakter!");
+      MySwal.fire("Error", "Nomor telepon harus menggunakan angka, diawali dengan 08, dan maksimal 13 karakter!", "error");
       return;
     }
 
     if (password.length > 15) {
-      alert("Password maksimal 15 karakter!");
+      MySwal.fire("Error", "Password maksimal 15 karakter!", "error");
+      return;
+    }
+
+    if (address.length > 100) {
+      MySwal.fire("Error", "Alamat maksimal 100 karakter!", "error");
       return;
     }
 
@@ -88,16 +95,23 @@ function Register() {
         const responseData = response.data;
         cookies.set("token", responseData.token);
         console.log("Registration success!");
-        setShowSuccessAlert(true); // Show success alert
-        setTimeout(() => {
-          setShowSuccessAlert(false); // Hide success alert after some time
-          window.location.href = "/login";
-        }, 3000); // Hide alert after 3 seconds and redirect to login
+        MySwal.fire({
+          title: "Registrasi Berhasil!",
+          text: "Anda akan diarahkan ke halaman login dalam beberapa saat.",
+          icon: "success",
+          timer: 3000,
+          timerProgressBar: true,
+          willClose: () => {
+            window.location.href = "/login";
+          },
+        });
       } else {
         console.log("Registration failed!");
+        MySwal.fire("Error", "Registrasi gagal! Silakan coba lagi.", "error");
       }
     } catch (error) {
       console.error("Error:", error);
+      MySwal.fire("Error", "Terjadi kesalahan saat registrasi!", "error");
     }
   };
 
@@ -148,6 +162,10 @@ function Register() {
                             <Form.Control id="email" style={{ fontSize: "14px", padding: "10px 12px" }} type="email" placeholder="Masukkan Email" />
                           </Form.Group>
                           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                            <Form.Label style={{ fontSize: "14px" }}>Address</Form.Label>
+                            <Form.Control id="address" style={{ fontSize: "14px", padding: "10px 12px" }} type="text" placeholder="Masukkan Alamat" />
+                          </Form.Group>
+                          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                             <Form.Label style={{ fontSize: "14px" }}>Telephone</Form.Label>
                             <Form.Control id="phoneNumber" style={{ fontSize: "14px", padding: "10px 12px" }} type="text" placeholder="Masukkan Nomor Telepon Aktif" />
                           </Form.Group>
@@ -170,11 +188,6 @@ function Register() {
           </Row>
         </Container>
       </div>
-
-      {/* Success Alert */}
-      <Alert show={showSuccessAlert} variant="success" onClose={() => setShowSuccessAlert(false)} dismissible>
-        Registrasi berhasil! Anda akan diarahkan ke halaman login dalam beberapa saat.
-      </Alert>
     </>
   );
 }

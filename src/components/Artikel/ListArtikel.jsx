@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "../../assets/css/Artikel.css";
 import CardArtikel from "../CardArtikel";
 import { useEffect, useState } from "react";
-import { getArtikel } from "../../redux/reducer/artikelReducer";
+import { getArtikel, searchByKeyword, resetFilter } from "../../redux/reducer/artikelReducer";
 import HighlightArtikel from "../HighlightArtikel";
 import FilterArtikel from "../FilterArtikel";
 import { useNavigate } from "react-router-dom";
@@ -11,38 +11,46 @@ import ReactPaginate from "react-paginate";
 function ListArtikel() {
   const navigation = useNavigate();
   const dispatch = useDispatch();
-  const { artikel, filterCategory } = useSelector((state) => state.artikel);
+  const { artikel, filterCategory, isLoading } = useSelector((state) => state.artikel);
 
   const ITEMS_PER_PAGE = 6;
-  const [activePage, setActivePage] = useState(1); // Halaman aktif
-  const totalItems = artikel.length; // Jumlah total artikel
-  const handlePageChange = (pageNumber) => {
-    setActivePage(pageNumber.selected + 1);
-  };
+  const [activePage, setActivePage] = useState(1);
+  const [searchTerm, setSearchTerm] = useState("");
+  const totalItems = artikel.length;
   const startIndex = (activePage - 1) * ITEMS_PER_PAGE;
   const endIndex = startIndex + ITEMS_PER_PAGE;
   const displayedArtikel = artikel.slice(startIndex, endIndex);
 
-  const loading = useSelector((state) => state.artikel);
   const higlightedArtikel = artikel.find((item) => item.categorihg === "true");
   const filteredCategory = filterCategory === "all" ? displayedArtikel : displayedArtikel.filter((item) => item.categori === filterCategory);
 
-  const handleDetail = (id) => {
-    navigation(`/detail/${id}`);
+  const handlePageChange = (pageNumber) => {
+    setActivePage(pageNumber.selected + 1);
   };
 
   useEffect(() => {
     dispatch(getArtikel());
   }, [dispatch]);
 
-  if (loading.isLoading) {
+  useEffect(() => {
+    if (searchTerm.trim() === "") {
+      dispatch(resetFilter());
+    } else {
+      dispatch(searchByKeyword(searchTerm));
+    }
+  }, [searchTerm, dispatch]);
+
+  const handleDetail = (id) => {
+    navigation(`/detail/${id}`);
+  };
+
+  if (isLoading) {
     return <p>Loading articles. . . </p>;
   }
 
   return (
     <>
-      <FilterArtikel />
-
+      <FilterArtikel setSearchTerm={setSearchTerm} />
       {higlightedArtikel && (
         <HighlightArtikel
           imgHg={higlightedArtikel.image_source}

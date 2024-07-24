@@ -1,0 +1,161 @@
+/* General Styling */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f8ff; /* Light blue background */
+  color: #333;
+}
+
+h2 {
+  color: #007bff; /* Blue color for headers */
+}
+
+/* Admin Layout */
+.container-fluid {
+  padding: 0;
+}
+
+.row {
+  margin: 0;
+}
+
+.col-md-12 {
+  padding: 0;
+}
+
+/* Table Styling */
+.table-container {
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #e0f7fa; /* Light blue background for the table */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow for the table */
+}
+
+.table th,
+.table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.table th {
+  background-color: #007bff; /* Blue background color for headers */
+  color: #000; /* Black text color for headers */
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #ffffff; /* White color for odd rows */
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+  background-color: #e0f7fa; /* Light blue color for even rows */
+}
+
+.table-hover tbody tr:hover {
+  background-color: #d0e9f2; /* Slightly darker blue on hover */
+}
+
+/* Pagination Styling */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  padding: 8px 16px;
+  margin: 0 5px;
+  border: none;
+  background-color: #007bff; /* Blue color */
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.pagination button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.pagination button:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+.pagination span {
+  margin: 0 10px;
+  color: #007bff; /* Blue color */
+}
+
+/* Button Styling */
+.btn-info {
+  background-color: #007bff; /* Blue color */
+  border: none;
+  color: #fff;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-info:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.btn-secondary {
+  background-color: #6c757d; /* Secondary button color */
+  border: none;
+  color: #fff;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-secondary:hover {
+  background-color: #565e64; /* Darker on hover */
+}
+
+.btn-danger {
+  background-color: #dc3545; /* Danger button color */
+  border: none;
+  color: #fff;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-danger:hover {
+  background-color: #c82333; /* Darker on hover */
+}
+
+.btn-success {
+  background-color: #28a745; /* Success button color */
+  border: none;
+  color: #fff;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-success:hover {
+  background-color: #218838; /* Darker on hover */
+}
+
+/* Card Styling */
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow for cards */
+  margin-bottom: 20px;
+}
+
+.card-header {
+  background-color: #007bff; /* Blue background color for card headers */
+  color: #fff; /* White text color for card headers */
+}
+
+/* Error and Success Messages */
+.swal2-popup .swal2-title {
+  color: #007bff; /* Blue color for SweetAlert titles */
+}

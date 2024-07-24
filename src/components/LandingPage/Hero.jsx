@@ -9,9 +9,9 @@ function Hero() {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
   return (
@@ -21,14 +21,16 @@ function Hero() {
           <div className="col-sm-12 col-md-6 col-lg-6 text-dark mt-5">
             <p className="hero-tag">#LawanBullying</p>
             <p className="hero-heading">Jangan Takut!</p>
-            <p className="hero-heading" style={{
-              color: '#3366FF',
-            }}>Ayo Laporkan Bullying</p>
+            <p
+              className="hero-heading"
+              style={{
+                color: "#3366FF",
+              }}
+            >
+              Ayo Laporkan Bullying
+            </p>
             <p className="hero-description">
-              Komisi Perlindungan Anak Indonesia (KPAI) menerima setidaknya
-              37.381 laporan perundungan dalam kurun waktu 2011 hingga 2019.
-              Dari jumlah tersebut,2.473 kasus diduga terjadi di dunia
-              pendidikan.
+              Komisi Perlindungan Anak Indonesia (KPAI) menerima setidaknya 37.381 laporan perundungan dalam kurun waktu 2011 hingga 2019. Dari jumlah tersebut,2.473 kasus diduga terjadi di dunia pendidikan.
             </p>
           </div>
           <div className="col-sm-12 col-md-6 col-lg-6 mt-5">
