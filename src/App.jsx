@@ -22,8 +22,11 @@ import ChangePassword from "./pages/ChangePassword"; // Import ChangePassword co
 
 function App() {
   const store = useSelector((state) => state.users);
+
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/Buddy">
+      {" "}
+      {/* Mengatur basename ke subdirectory aplikasi */}
       {store.authStatus ? (
         <Routes>
           <Route path="/" element={<LandingPage />} />
