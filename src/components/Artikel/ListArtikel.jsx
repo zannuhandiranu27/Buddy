@@ -33,11 +33,15 @@ function ListArtikel() {
   }, [dispatch]);
 
   useEffect(() => {
-    if (searchTerm.trim() === "") {
-      dispatch(resetFilter());
-    } else {
-      dispatch(searchByKeyword(searchTerm));
-    }
+    const delayDebounceFn = setTimeout(() => {
+      if (searchTerm.trim() === "") {
+        dispatch(resetFilter());
+      } else {
+        dispatch(searchByKeyword(searchTerm));
+      }
+    }, 300); // delay 300ms
+
+    return () => clearTimeout(delayDebounceFn);
   }, [searchTerm, dispatch]);
 
   const handleDetail = (id) => {
