@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://zannuhandiranu27.github.io/Buddy",
+  "homepage": "https://zannuhandiranu27.github.io/Buddy/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
