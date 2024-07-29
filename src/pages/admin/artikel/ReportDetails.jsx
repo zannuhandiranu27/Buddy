@@ -19,6 +19,7 @@ function ReportDetails() {
     const fetchReport = async () => {
       try {
         const response = await axios.get(`https://6454d642f803f34576329b54.mockapi.io/api/v1/pelaporan/${id}`);
+        console.log("Fetched report data:", response.data); // Logging data
         setReport(response.data);
       } catch (error) {
         setError("Error fetching data. Please try again later.");
@@ -70,7 +71,7 @@ function ReportDetails() {
         {report ? (
           <Card className="shadow-sm">
             <Card.Header as="h5">{report.judul}</Card.Header>
-            <Card.Body>
+            <Card.Body className="card-body">
               <Row>
                 <Col md={6}>
                   <p>
@@ -88,17 +89,14 @@ function ReportDetails() {
                   <p>
                     <strong>Tanggal:</strong> {report.tanggal}
                   </p>
-                </Col>
-                <Col md={6}>
                   <p>
                     <strong>Lokasi:</strong> {report.lokasi}
                   </p>
                   <p>
-                    <strong>Bukti:</strong>{" "}
-                    <a href={report.bukti} target="_blank" rel="noopener noreferrer">
-                      {report.bukti}
-                    </a>
+                    <strong>Bukti:</strong> <img src={report.bukti} alt="Bukti" />
                   </p>
+                </Col>
+                <Col md={6}>
                   <p>
                     <strong>Email:</strong> {report.email}
                   </p>
@@ -114,15 +112,17 @@ function ReportDetails() {
                   <p>
                     <strong>Status:</strong> {report.status}
                   </p>
-                  <Button onClick={handleProcessClick} variant="info" className="mt-3">
-                    Proses
-                  </Button>
                 </Col>
               </Row>
+              {report.status === "Menunggu" && (
+                <Button className="mt-3" variant="info" onClick={handleProcessClick}>
+                  Proses Laporan
+                </Button>
+              )}
             </Card.Body>
           </Card>
         ) : (
-          <Alert variant="warning">No report found.</Alert>
+          <Alert variant="warning">Laporan tidak ditemukan.</Alert>
         )}
       </Container>
     </AdminLayout>
