@@ -1,0 +1,43 @@
+/* JumbotronArtikel.css */
+
+/* Tampilan default */
+.jumbotronArtikel {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 390px;
+}
+
+.content p {
+    font-size: 55px;
+    font-weight: 700;
+    padding-top: 50px;
+}
+
+/* Responsif ketika lebar layar kurang dari 768px */
+@media (max-width: 768px) {
+    .jumbotronArtikel {
+        height: 250px;
+        /* Sesuaikan tinggi sesuai kebutuhan */
+    }
+
+    .content p {
+        font-size: 40px;
+        /* Ukuran font yang lebih kecil */
+        padding-top: 30px;
+    }
+}
+
+/* Responsif ketika lebar layar kurang dari 576px */
+@media (max-width: 576px) {
+    .jumbotronArtikel {
+        height: 180px;
+        /* Sesuaikan tinggi sesuai kebutuhan */
+    }
+
+    .content p {
+        font-size: 30px;
+        /* Ukuran font yang lebih kecil */
+        padding-top: 20px;
+    }
+}

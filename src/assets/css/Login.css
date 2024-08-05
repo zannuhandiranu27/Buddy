@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+.body {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    font-family: "Poppins", sans-serif;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-left: 1%;
+    margin-top: 100px;
+}
+
+.container-x1 {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.container-x1 .kiri {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 400px;
+    height: 600px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.container-x1 .kiri img {
+    max-width: 100%;
+    height: auto;
+}
+
+.container-x1 .kanan {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 400px;
+    height: 600px;
+    background-color: #f6f9ff;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 50px;
+}
+
+.container-x1 .kanan .buddy {
+    /* margin-top: 40px; */
+    width: 100px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-x1 .kanan .buddy img {
+    margin-right: 15px;
+    width: 40px;
+}
+
+.container-x1 .kanan .buddy span {
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.container-x1 .kanan .judul h1 {
+    margin-top: 20px;
+    margin-bottom: 0;
+    font-weight: bold;
+    font-size: 36px;
+}
+
+.container-x1 .kanan .judul p {
+    font-size: 12px;
+}
+
+.container-x1 .kanan .judul a {
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.container-x1 .kanan .judul a:hover {
+    text-decoration: underline;
+}
+
+.container-x1 .kanan .form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.container-x1 .kanan .form form .box-password {
+    position: relative;
+}
+
+.container-x1 .kanan .form form .box-password span i {
+    position: absolute;
+    right: 15px;
+    bottom: 10px;
+}
+
+::placeholder {
+    font-size: 12px;
+}
+
+.container-x1 .kanan .form form label.email,
+.container-x1 .kanan .form form label.nama,
+.container-x1 .kanan .form form label.konPassword,
+.container-x1 .kanan .form form label.password {
+    font-size: 12px;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.container-x1 .kanan .form form span i {
+    cursor: pointer;
+}
+
+.container-x1 .kanan .form form button {
+    margin-top: 25px;
+    height: 30px;
+    font-size: 12px;
+}
+
+@media only screen and (max-width: 425px) {
+    .body {
+        padding: 20px;
+        margin-left: 0px;
+        margin-top: 0px;
+    }
+
+    .container-x1 .kiri {
+        display: none;
+    }
+
+    .container-x1 .kanan {
+        padding: 20px;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .container-x1 .kanan {
+        width: 100%;
+        max-width: 350px;
+        height: auto;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .container-x1 .kanan {
+        padding: 20px;
+    }
+}
