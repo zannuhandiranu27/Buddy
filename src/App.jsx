@@ -13,27 +13,16 @@ import Update from "./pages/admin/artikel/update";
 import EditProfil from "./pages/EditProfil";
 import DashboardNotFound from "./components/DashboardNotFound";
 import Preview from "./pages/admin/artikel/preview";
-<<<<<<< HEAD
-import UserDashbaord from "./pages/userDashboard";
-import Datapelaporan from "./pages/admin/artikel/datapelaporan";
-import Prosespelaporan from "./pages/admin/artikel/prosespelaporan";
-import Riwayatpelaporan from "./pages/admin/artikel/riwayatpelaporan";
-import ReportDetails from "./pages/admin/artikel/ReportDetails"; // Import ReportDetails component
-import ChangePassword from "./pages/ChangePassword"; // Import ChangePassword component
-
-function App() {
-  const store = useSelector((state) => state.users);
-=======
 import UserDashboard from "./pages/userDashboard";
 import Datapelaporan from "./pages/admin/artikel/datapelaporan";
 import Prosespelaporan from "./pages/admin/artikel/prosespelaporan";
 import Riwayatpelaporan from "./pages/admin/artikel/riwayatpelaporan";
 import ReportDetails from "./pages/admin/artikel/ReportDetails";
 import ChangePassword from "./pages/ChangePassword";
+
 function App() {
   const store = useSelector((state) => state.users);
-  console.log(store);
->>>>>>> master
+
   return (
     <BrowserRouter>
       {store.authStatus ? (
@@ -46,11 +35,7 @@ function App() {
           <Route path="/detail/:id" element={<DetailArtikel />} />
           <Route path="/formLaporan" element={<FormPelaporan data="send" />} />
           <Route path="/profile" element={<EditProfil />} />
-<<<<<<< HEAD
-          <Route path="/change-password" element={<ChangePassword />} /> {/* Add route for ChangePassword */}
-=======
           <Route path="/change-password" element={<ChangePassword />} />
->>>>>>> master
           <Route path="/admin" element={<DashboardAdmin />} />
           <Route path="/admin/artikel/create" element={<Create />} />
           <Route path="/admin/artikel/update/:id" element={<Update />} />
@@ -58,13 +43,8 @@ function App() {
           <Route path="/admin/datapelaporan" element={<Datapelaporan />} />
           <Route path="/admin/prosespelaporan" element={<Prosespelaporan />} />
           <Route path="/admin/riwayatpelaporan" element={<Riwayatpelaporan />} />
-<<<<<<< HEAD
-          <Route path="/admin/laporan/:id" element={<ReportDetails />} /> {/* Add route for ReportDetails */}
-          <Route path="/dashboard" element={<UserDashbaord />} />
-=======
           <Route path="/admin/laporan/:id" element={<ReportDetails />} />
           <Route path="/dashboard" element={<UserDashboard />} />
->>>>>>> master
           <Route path="*" element={<DashboardNotFound />} />
         </Routes>
       ) : (
