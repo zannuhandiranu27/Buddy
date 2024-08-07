@@ -7,7 +7,7 @@ import ReactQuill from "react-quill";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
-//Sweet alert with react content
+// Sweet alert with react content
 const MySwal = withReactContent(Swal);
 
 function Update() {
@@ -23,6 +23,8 @@ function Update() {
     excerpt: "",
     description: "",
   });
+
+  const currentDate = new Date().toISOString().split("T")[0];
 
   const handleChange = (e) => {
     // Ensure title does not exceed 55 characters
@@ -45,8 +47,8 @@ function Update() {
 
   const handleSubmit = () => {
     dispatch(updateArtikel(id, formData));
-    MySwal.fire("Success!", "Your todo has been updated.", "success");
-    navigate("/admin/artikel");
+    MySwal.fire("Success!", "Your article has been updated.", "success");
+    navigate("/admin");
   };
 
   const modules = {
@@ -80,7 +82,7 @@ function Update() {
               </div>
               <div className="form-group">
                 <label>Date</label>
-                <input type="date" className="form-control mt-2" id="createdAt" name="createdAt" value={formData.createdAt} onChange={handleChange} />
+                <input type="date" className="form-control mt-2" id="createdAt" name="createdAt" value={formData.createdAt} onChange={handleChange} min="2023-07-07" max={currentDate} onFocus={(e) => (e.target.type = "date")} />
               </div>
             </div>
             <div className="col-md-6">
@@ -107,13 +109,13 @@ function Update() {
             </div>
             <div className="form-group mt-3">
               <label>Excerpt</label>
-              <div className="form-floating ">
+              <div className="form-floating">
                 <textarea className="form-control" placeholder="Leave a comment here" id="excerpt" name="excerpt" value={formData.excerpt} onChange={handleChange} style={{ height: "100px" }}></textarea>
               </div>
             </div>
             <div className="form-group mt-3">
               <label>Description</label>
-              <div className="form-floating ">
+              <div className="form-floating">
                 <ReactQuill theme="snow" id="description" name="description" value={formData.description} onChange={handleQuillChange} modules={modules} />
               </div>
             </div>

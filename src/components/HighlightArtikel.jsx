@@ -1,8 +1,7 @@
 import "../assets/css/Artikel.css";
 import { PropTypes } from "prop-types";
 
-function HighlightArtikel({imgHg, categori, date, title, excerpt, onClick}) {
-
+function HighlightArtikel({ imgHg, categori, date, title, excerpt, onClick }) {
   const truncatedExcerpt = excerpt.length > 100 ? `${excerpt.substring(0, 100)}...` : excerpt;
 
   return (
@@ -17,17 +16,15 @@ function HighlightArtikel({imgHg, categori, date, title, excerpt, onClick}) {
               <div className="col-md-6">
                 <div className="card-body">
                   <div className="card-category d-flex mt-4">
-                 <h5>
-                    <span className="badge bg-primary">{ categori }</span>
-                 </h5>
+                    <h5>
+                      <span className="badge bg-primary">{categori}</span>
+                    </h5>
                     <span className="px-5">{date}</span>
                   </div>
                   <p className="card-title mt-4">{title}</p>
-                  <p className="card-text mt-4">
-                    {truncatedExcerpt}
-                  </p>
+                  <p className="card-text mt-4">{truncatedExcerpt}</p>
                   <p className="card-button mt-4">
-                  <a href="#" className="btn btn-outline-primary" onClick={onClick}>
+                    <a href="#" className="btn btn-outline-primary" onClick={onClick}>
                       Baca lebih lanjut
                     </a>
                   </p>
@@ -36,7 +33,7 @@ function HighlightArtikel({imgHg, categori, date, title, excerpt, onClick}) {
             </div>
           </div>
         </div>
-      <hr />
+        <hr />
       </div>
     </section>
   );
@@ -49,6 +46,6 @@ HighlightArtikel.propTypes = {
   title: PropTypes.string.isRequired,
   excerpt: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
-}
+};
 
 export default HighlightArtikel;

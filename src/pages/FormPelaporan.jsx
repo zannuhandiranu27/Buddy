@@ -21,11 +21,10 @@ function FormPelaporan(props) {
     tanggal: "",
     lokasi: "",
     bukti: "",
-    email: "",
+    email: userData ? userData.email : "",
     phone: "",
     anonymous: false,
     witnesses: "",
-    additionalComments: "",
     status: "Menunggu",
     pelaporRole: "", // Role of the reporter: "Saksi" or "Korban"
   });
@@ -77,11 +76,10 @@ function FormPelaporan(props) {
           tanggal: "",
           lokasi: "",
           bukti: "",
-          email: "",
+          email: userData.email,
           phone: "",
           anonymous: false,
           witnesses: "",
-          additionalComments: "",
           status: "Menunggu",
           pelaporRole: "", // Reset pelapor role
         });
@@ -106,6 +104,7 @@ function FormPelaporan(props) {
   useEffect(() => {
     if (userData) {
       generateMathQuestion();
+      setLaporan((prevLaporan) => ({ ...prevLaporan, email: userData.email }));
     }
   }, [userData]);
 
@@ -169,9 +168,7 @@ function FormPelaporan(props) {
                           Pilih Kategori Laporan Bullying Anda *
                         </option>
                         <option value="Verbal">Verbal</option>
-                        <option value="Fisik">Fisik</option>
-                        <option value="Sosial">Sosial</option>
-                        <option value="Cyber">Cyber</option>
+                        <option value="Non Verbal">Non Verbal</option>
                       </Form.Select>
                     </Form.Group>
                     <Form.Group className="mb-3 mt-4" controlId="instansi">
@@ -214,44 +211,40 @@ function FormPelaporan(props) {
                       <Form.Label>Lampirkan Bukti (Link/URL)</Form.Label>
                       <Form.Control value={laporan.bukti} type="url" placeholder="Isi link/url yang berisi gambar/video/dokumen pendukung" onChange={(e) => setLaporan({ ...laporan, bukti: e.target.value })} disabled={!userData} />
                     </Form.Group>
-                    <Form.Group className="mb-3 mt-4" controlId="witnesses">
-                      <Form.Label>Nama Saksi</Form.Label>
-                      <Form.Control value={laporan.witnesses} type="text" placeholder="Isi nama saksi jika ada (opsional)" onChange={(e) => setLaporan({ ...laporan, witnesses: e.target.value })} disabled={!userData} />
-                    </Form.Group>
-                    <Form.Group className="mb-3 mt-4" controlId="additionalComments">
-                      <Form.Label>Komentar Tambahan</Form.Label>
-                      <Form.Control
-                        value={laporan.additionalComments}
-                        as="textarea"
-                        rows={3}
-                        placeholder="Isi komentar tambahan (opsional)"
-                        onChange={(e) => setLaporan({ ...laporan, additionalComments: e.target.value })}
-                        disabled={!userData}
-                      />
-                    </Form.Group>
+
+                    {!laporan.anonymous && (
+                      <>
+                        <Form.Group className="mb-3 mt-4" controlId="witnesses">
+                          <Form.Label>Nama Saksi</Form.Label>
+                          <Form.Control value={laporan.witnesses} type="text" placeholder="Isi nama saksi jika ada (opsional)" onChange={(e) => setLaporan({ ...laporan, witnesses: e.target.value })} disabled={!userData} />
+                        </Form.Group>
+                        <Form.Group className="mb-3 mt-4" controlId="phone">
+                          <Form.Label>Nomor Telepon/WhatsApp</Form.Label>
+                          <Form.Control
+                            value={laporan.phone}
+                            type="tel"
+                            placeholder="Nomor Telepon atau WhatsApp aktif"
+                            onChange={(e) => {
+                              const inputPhone = e.target.value;
+                              const phoneRegex = /^\+?\d{0,13}$/; // Regex to allow optional "+" at the start and up to 13 digits
+                              if (phoneRegex.test(inputPhone)) {
+                                setLaporan({ ...laporan, phone: inputPhone });
+                              } else {
+                                MySwal.fire("Error", "Nomor telepon harus berupa angka dan maksimal 13 digit!", "error");
+                              }
+                            }}
+                            maxLength={13}
+                            disabled={!userData}
+                          />
+                        </Form.Group>
+                      </>
+                    )}
+
                     <Form.Group className="mb-3 mt-4" controlId="email">
                       <Form.Label>Email</Form.Label>
-                      <Form.Control value={laporan.email} type="email" placeholder="Email aktif" onChange={(e) => setLaporan({ ...laporan, email: e.target.value })} disabled={!userData} />
+                      <Form.Control value={laporan.email} type="email" placeholder="Email aktif" readOnly disabled />
                     </Form.Group>
-                    <Form.Group className="mb-3 mt-4" controlId="phone">
-                      <Form.Label>Nomor Telepon/WhatsApp</Form.Label>
-                      <Form.Control
-                        value={laporan.phone}
-                        type="tel"
-                        placeholder="Nomor Telepon atau WhatsApp aktif"
-                        onChange={(e) => {
-                          const inputPhone = e.target.value;
-                          const phoneRegex = /^\+?\d{0,13}$/; // Regex to allow optional "+" at the start and up to 13 digits
-                          if (phoneRegex.test(inputPhone)) {
-                            setLaporan({ ...laporan, phone: inputPhone });
-                          } else {
-                            MySwal.fire("Error", "Nomor telepon harus berupa angka dan maksimal 13 digit!", "error");
-                          }
-                        }}
-                        maxLength={13}
-                        disabled={!userData}
-                      />
-                    </Form.Group>
+
                     <Form.Group className="mb-3 mt-4" controlId="anonymous">
                       <Form.Check type="checkbox" label="Sembunyikan identitas saya (Laporkan sebagai anonim)" checked={laporan.anonymous} onChange={(e) => setLaporan({ ...laporan, anonymous: e.target.checked })} disabled={!userData} />
                     </Form.Group>

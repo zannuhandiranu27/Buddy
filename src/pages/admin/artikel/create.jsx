@@ -2,10 +2,7 @@ import { useEffect } from "react";
 import AdminLayout from "../../../layout/AdminLayout";
 import FormArtikelAdmin from "../../../components/FormArtikelAdmin";
 import { useDispatch } from "react-redux";
-import {
-  createArtikel,
-  getArtikel,
-} from "../../../redux/reducer/artikelReducer";
+import { createArtikel, getArtikel } from "../../../redux/reducer/artikelReducer";
 import { useNavigate } from "react-router-dom";
 
 const Create = () => {
@@ -18,7 +15,7 @@ const Create = () => {
 
   const handleCreateArtikel = (data) => {
     dispatch(createArtikel(data));
-    navigate("/admin/artikel");
+    navigate("/admin");
   };
 
   return (

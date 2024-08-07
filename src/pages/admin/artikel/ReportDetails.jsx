@@ -92,25 +92,22 @@ function ReportDetails() {
                   <p>
                     <strong>Lokasi:</strong> {report.lokasi}
                   </p>
-                  <p>
-                    <strong>Bukti:</strong> <img src={report.bukti} alt="Bukti" />
-                  </p>
                 </Col>
                 <Col md={6}>
                   <p>
-                    <strong>Email:</strong> {report.email}
+                    <strong>Email:</strong> {report.email || "Tidak Tersedia"}
                   </p>
                   <p>
-                    <strong>Phone:</strong> {report.phone}
+                    <strong>Phone:</strong> {report.phone || "Anonym"}
                   </p>
                   <p>
-                    <strong>Saksi:</strong> {report.witnesses}
-                  </p>
-                  <p>
-                    <strong>Komentar Tambahan:</strong> {report.additionalComments}
+                    <strong>Saksi:</strong> {report.witnesses || "Anonym"}
                   </p>
                   <p>
                     <strong>Status:</strong> {report.status}
+                  </p>
+                  <p>
+                    <strong>Bukti:</strong> <img src={report.bukti} alt="Bukti" />
                   </p>
                 </Col>
               </Row>

@@ -39,7 +39,7 @@ function Index() {
             <Col>
               <Row>
                 <p style={{ fontSize: "14px", marginTop: "10px" }}>Selamat Datang</p>
-                <h2 style={{ fontSize: "24px", marginTop: "-10px" }}>{userData.fullname}</h2>
+                <h2 style={{ fontSize: "24px", marginTop: "-10px", textAlign: "left" }}>{userData.fullname}</h2>
               </Row>
             </Col>
           </Row>
